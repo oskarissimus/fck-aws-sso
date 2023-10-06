@@ -5,6 +5,8 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 from webdriver_manager.chrome import ChromeDriverManager
 from pathlib import Path
+import logging
+
 
 def build_driver(headless=True):
     service = ChromeService(ChromeDriverManager().install())
@@ -15,34 +17,37 @@ def build_driver(headless=True):
         options.add_argument("headless")
     return webdriver.Chrome(service=service, options=options)
 
+
 def authorize_sso(url, code, headless=True):
     driver = build_driver(headless)
     url_with_code = f"{url}?user_code={code}"
     driver.get(url_with_code)
-    print("opening the page")
+    logging.debug("Opening the page %s", url_with_code)
 
     try:
-        print("waiting for the page to load")
+        logging.debug("Waiting for the page to load")
         submit_button = WebDriverWait(driver, 1000).until(
             EC.element_to_be_clickable((By.ID, "cli_verification_btn"))
         )
-        print("clicking on the verification button")
+        logging.debug("Clicking on the verification button")
         submit_button.click()
 
-        print("waiting for the login page to load")
+        logging.debug("Waiting for the allow page to load")
         login_button = WebDriverWait(driver, 1000).until(
             EC.element_to_be_clickable((By.ID, "cli_login_button"))
         )
-        print("clicking on the allow button")
+        logging.debug("Clicking on the allow button")
         login_button.click()
 
-        print("waiting for confirmation page to load")
+        logging.debug("Waiting for the confirmation page to load")
         WebDriverWait(driver, 1000).until(
-            EC.text_to_be_present_in_element((By.TAG_NAME, 'body'), "You may now close this browser.")
+            EC.text_to_be_present_in_element(
+                (By.TAG_NAME, "body"), "You may now close this browser."
+            )
         )
-
+        logging.debug("Done")
 
     except Exception as e:
-        print(f"An error occurred: {str(e)}")
+        logging.error("An error occurred: %s", str(e))
     finally:
         driver.quit()
