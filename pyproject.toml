@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "fck-aws-sso"
-version = "0.1.0"
+version = "0.1.2"
 description = "A tool to automate AWS SSO login"
 authors = ["Oskar Korczak <oskar.korczak@protonmail.com>"]
 readme = "README.md"
@@ -10,7 +10,7 @@ packages = [{ include = "fck_aws_sso" }]
 python = "^3.10"
 selenium = "^4.13.0"
 webdriver-manager = "^4.0.1"
-typer = {extras = ["all"], version = "^0.9.0"}
+typer = { extras = ["all"], version = "^0.9.0" }
 
 
 [tool.poetry.group.dev.dependencies]
@@ -25,4 +25,4 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.scripts]
-fck_aws_sso = 'fck_aws_sso.main:main'
+fck-aws-sso = 'fck_aws_sso.main:app'
