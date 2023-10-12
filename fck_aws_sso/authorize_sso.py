@@ -8,18 +8,21 @@ from pathlib import Path
 import logging
 
 
-def build_driver(headless=True):
+def build_driver(headless=True, user_data_dir=None):
     service = ChromeService(ChromeDriverManager().install())
     options = webdriver.ChromeOptions()
-    user_data_dir = Path.home() / ".cache" / "fck_aws_sso" / "user_data"
-    options.add_argument(f"user-data-dir={user_data_dir}")
+    default_usser_data_dir = (
+        Path.home() / ".cache" / "fck_aws_sso" / "user_data"
+    )
+    _user_data_dir = user_data_dir or default_usser_data_dir
+    options.add_argument(f"user-data-dir={_user_data_dir}")
     if headless:
         options.add_argument("headless")
     return webdriver.Chrome(service=service, options=options)
 
 
-def authorize_sso(url, code, headless=True):
-    driver = build_driver(headless)
+def authorize_sso(url, code, headless=True, user_data_dir=None):
+    driver = build_driver(headless, user_data_dir)
     url_with_code = f"{url}?user_code={code}"
     driver.get(url_with_code)
     logging.debug("Opening the page %s", url_with_code)
