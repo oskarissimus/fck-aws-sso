@@ -5,6 +5,7 @@ description = "A tool to automate AWS SSO login"
 authors = ["Oskar Korczak <oskar.korczak@protonmail.com>"]
 readme = "README.md"
 packages = [{ include = "fck_aws_sso" }]
+repository = "https://github.com/oskarissimus/fck-aws-sso"
 
 [tool.poetry.dependencies]
 python = "^3.10"
