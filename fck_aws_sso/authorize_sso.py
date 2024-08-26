@@ -37,15 +37,16 @@ def authorize_sso(url, code, headless=True, user_data_dir=None):
 
         logging.debug("Waiting for the allow page to load")
         login_button = WebDriverWait(driver, 1000).until(
-            EC.element_to_be_clickable((By.ID, "cli_login_button"))
+            EC.element_to_be_clickable((By.CSS_SELECTOR, ".awsui_button_vjswe_1nbam_105.awsui_variant-primary_vjswe_1nbam_248"))
         )
+        
         logging.debug("Clicking on the allow button")
         login_button.click()
 
         logging.debug("Waiting for the confirmation page to load")
         WebDriverWait(driver, 1000).until(
             EC.text_to_be_present_in_element(
-                (By.TAG_NAME, "body"), "You may now close this browser."
+                (By.TAG_NAME, "body"), "You can close this window."
             )
         )
         logging.debug("Done")
