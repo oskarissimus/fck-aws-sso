@@ -11,7 +11,7 @@ repository = "https://github.com/oskarissimus/fck-aws-sso"
 python = "^3.10"
 selenium = "^4.13.0"
 webdriver-manager = "^4.0.1"
-typer = { extras = ["all"], version = "^0.9.0" }
+typer = { extras = ["all"], version = ">=0.9,<0.13" }
 
 
 [tool.poetry.group.dev.dependencies]
