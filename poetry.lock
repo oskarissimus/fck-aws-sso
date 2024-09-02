@@ -664,20 +664,22 @@ jupyter = ["ipywidgets (>=7.5.1,<9)"]
 
 [[package]]
 name = "selenium"
-version = "4.13.0"
-description = ""
+version = "4.24.0"
+description = "Official Python bindings for Selenium WebDriver"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "selenium-4.13.0-py3-none-any.whl", hash = "sha256:f0f9185c01ae249a321529c4e3aa0edc2a900642e61fdbb76988cd72d2762ece"},
-    {file = "selenium-4.13.0.tar.gz", hash = "sha256:3c413a4f1b8af67824703195e3b1c19cfb1c3186c799efa035d55fd59d6dd59f"},
+    {file = "selenium-4.24.0-py3-none-any.whl", hash = "sha256:42c23f60753d5415b261b236cecbd69bd4eb5271e1563915f546b443cb6b71c6"},
+    {file = "selenium-4.24.0.tar.gz", hash = "sha256:88281e5b5b90fe231868905d5ea745b9ee5e30db280b33498cc73fb0fa06d571"},
 ]
 
 [package.dependencies]
 certifi = ">=2021.10.8"
 trio = ">=0.17,<1.0"
 trio-websocket = ">=0.9,<1.0"
+typing_extensions = ">=4.9,<5.0"
 urllib3 = {version = ">=1.26,<3", extras = ["socks"]}
+websocket-client = ">=1.8,<2.0"
 
 [[package]]
 name = "shellingham"
@@ -789,13 +791,13 @@ typing-extensions = ">=3.7.4.3"
 
 [[package]]
 name = "typing-extensions"
-version = "4.8.0"
+version = "4.12.2"
 description = "Backported and Experimental Type Hints for Python 3.8+"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "typing_extensions-4.8.0-py3-none-any.whl", hash = "sha256:8f92fc8806f9a6b641eaa5318da32b44d401efaac0f6678c9bc448ba3605faa0"},
-    {file = "typing_extensions-4.8.0.tar.gz", hash = "sha256:df8e4339e9cb77357558cbdbceca33c303714cf861d1eef15e1070055ae8b7ef"},
+    {file = "typing_extensions-4.12.2-py3-none-any.whl", hash = "sha256:04e5ca0351e0f3f85c6853954072df659d0d13fac324d0072316b67d7794700d"},
+    {file = "typing_extensions-4.12.2.tar.gz", hash = "sha256:1a7ead55c7e559dd4dee8856e3a88b41225abfe1ce8df57b7c13915fe121ffb8"},
 ]
 
 [[package]]
@@ -833,6 +835,22 @@ files = [
 packaging = "*"
 python-dotenv = "*"
 requests = "*"
+
+[[package]]
+name = "websocket-client"
+version = "1.8.0"
+description = "WebSocket client for Python with low level API options"
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "websocket_client-1.8.0-py3-none-any.whl", hash = "sha256:17b44cc997f5c498e809b22cdf2d9c7a9e71c02c8cc2b6c56e7c2d1239bfa526"},
+    {file = "websocket_client-1.8.0.tar.gz", hash = "sha256:3239df9f44da632f96012472805d40a23281a991027ce11d2f45a6f24ac4c3da"},
+]
+
+[package.extras]
+docs = ["Sphinx (>=6.0)", "myst-parser (>=2.0.0)", "sphinx-rtd-theme (>=1.1.0)"]
+optional = ["python-socks", "wsaccel"]
+test = ["websockets"]
 
 [[package]]
 name = "wsproto"
